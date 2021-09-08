@@ -51,6 +51,17 @@ class LinkedList
     @tail
   end
 
+  def at index
+    temp = @head
+    return nil if temp == nil
+    return temp if index == 0
+    (index).times do |idx|
+      return nil if temp.next_node == nil
+      temp = temp.next_node
+    end 
+    temp
+  end
+
   def iterate 
     puts "head : #{@head.value}"
     temp = @head
@@ -77,14 +88,11 @@ class Node
 end
 
 linked_list = LinkedList.new
-# p linked_list.size
-linked_list.prepend 3
-# p linked_list.size
-linked_list.prepend 2
-# p linked_list.size
-linked_list.prepend 1
-# p linked_list.size
-linked_list.iterate
+linked_list.append 1
+linked_list.append 2
+linked_list.append 3
+linked_list.append 4
+p linked_list.at(4)
 
 # linked_list.prepend 3
 # linked_list.iterate
