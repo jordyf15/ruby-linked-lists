@@ -98,6 +98,18 @@ class LinkedList
     end
   end
 
+  def to_s
+    temp = @head
+    str = ""
+    until temp == nil
+      str += "( #{temp.value} )"
+      str += " -> " unless temp.next_node == nil
+      str += " -> nil" if temp.next_node == nil
+      temp = temp.next_node
+    end
+    puts str
+  end
+
   def iterate 
     puts "head : #{@head.value}"
     puts "tail : #{@tail.value}"
@@ -129,4 +141,8 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-p linked_list.size
+linked_list.to_s
+linked_list.pop
+linked_list.to_s
+linked_list.prepend 99
+linked_list.to_s
