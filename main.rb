@@ -80,10 +80,9 @@ class LinkedList
     temp = @head
     contain = false
     return false if temp == nil
-    return true if temp.value == value
-    until temp.next_node == nil
-      temp = temp.next_node
+    until temp == nil
       contain = true if temp.value == value
+      temp = temp.next_node
     end
     contain
   end
@@ -130,4 +129,4 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-p linked_list.find 0
+p linked_list.contains? 5
