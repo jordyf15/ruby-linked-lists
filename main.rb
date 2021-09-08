@@ -43,6 +43,14 @@ class LinkedList
     size += 1
   end
 
+  def head 
+    @head
+  end
+
+  def tail
+    @tail
+  end
+
   def iterate 
     puts "head : #{@head.value}"
     temp = @head
@@ -69,13 +77,14 @@ class Node
 end
 
 linked_list = LinkedList.new
-p linked_list.size
+# p linked_list.size
 linked_list.prepend 3
-p linked_list.size
+# p linked_list.size
 linked_list.prepend 2
-p linked_list.size
+# p linked_list.size
 linked_list.prepend 1
-p linked_list.size
+# p linked_list.size
+linked_list.iterate
 
 # linked_list.prepend 3
 # linked_list.iterate
