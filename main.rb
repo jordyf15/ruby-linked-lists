@@ -87,6 +87,17 @@ class LinkedList
     end
     contain
   end
+  
+  def find value
+    return nil if contains?(value) == false
+    temp = @head
+    index = 0 
+    until temp == nil
+      return index if temp.value == value
+      index += 1
+      temp = temp.next_node
+    end
+  end
 
   def iterate 
     puts "head : #{@head.value}"
@@ -119,5 +130,4 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-# linked_list.iterate
-p linked_list.contains? 0
+p linked_list.find 0
