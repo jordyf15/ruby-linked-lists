@@ -8,12 +8,14 @@ class LinkedList
     if @head == nil
       new_node = Node.new value, nil
       @head = new_node
+      @tail = new_node
     else
       temp = @head
       until temp.next_node == nil
         temp = temp.next_node
       end
       new_node = Node.new value, nil
+      @tail = new_node
       temp.next_node = new_node
     end
   end
@@ -22,6 +24,7 @@ class LinkedList
     if @head == nil
       new_node = Node.new value, nil
       @head = new_node
+      @tail = new_node
     else
       temp = @head
       new_node = Node.new value, temp
@@ -29,7 +32,19 @@ class LinkedList
     end
   end
 
+  def size
+    temp = @head
+    size = 0
+    return 0 if temp == nil
+    until temp.next_node == nil
+      temp = temp.next_node
+      size += 1
+    end
+    size += 1
+  end
+
   def iterate 
+    puts "head : #{@head.value}"
     temp = @head
     if temp.next_node == nil
       puts temp.value 
@@ -54,9 +69,24 @@ class Node
 end
 
 linked_list = LinkedList.new
+p linked_list.size
 linked_list.prepend 3
-linked_list.iterate
+p linked_list.size
 linked_list.prepend 2
-linked_list.iterate
+p linked_list.size
 linked_list.prepend 1
-linked_list.iterate
+p linked_list.size
+
+# linked_list.prepend 3
+# linked_list.iterate
+# linked_list.prepend 2
+# linked_list.iterate
+# linked_list.prepend 1
+# linked_list.iterate
+
+# linked_list.append 1
+# linked_list.iterate
+# linked_list.append 2
+# linked_list.iterate
+# linked_list.append 3
+# linked_list.iterate
