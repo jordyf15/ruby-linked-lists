@@ -76,6 +76,18 @@ class LinkedList
     @tail.next_node = nil
   end
 
+  def contains? value
+    temp = @head
+    contain = false
+    return false if temp == nil
+    return true if temp.value == value
+    until temp.next_node == nil
+      temp = temp.next_node
+      contain = true if temp.value == value
+    end
+    contain
+  end
+
   def iterate 
     puts "head : #{@head.value}"
     puts "tail : #{@tail.value}"
@@ -107,29 +119,5 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-linked_list.iterate
-
-linked_list.pop
-linked_list.iterate
-linked_list.pop
-linked_list.iterate
-linked_list.pop
-linked_list.iterate
-linked_list.pop
-p linked_list.head
-p linked_list.tail
 # linked_list.iterate
-
-# linked_list.prepend 3
-# linked_list.iterate
-# linked_list.prepend 2
-# linked_list.iterate
-# linked_list.prepend 1
-# linked_list.iterate
-
-# linked_list.append 1
-# linked_list.iterate
-# linked_list.append 2
-# linked_list.iterate
-# linked_list.append 3
-# linked_list.iterate
+p linked_list.contains? 0
