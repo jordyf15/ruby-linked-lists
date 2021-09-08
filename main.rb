@@ -62,8 +62,23 @@ class LinkedList
     temp
   end
 
+  def pop
+    if @head == @tail
+      @head = nil
+      @tail = nil
+      return
+    end
+    temp = @head
+    until temp.next_node == @tail
+      temp = temp.next_node
+    end
+    @tail = temp
+    @tail.next_node = nil
+  end
+
   def iterate 
     puts "head : #{@head.value}"
+    puts "tail : #{@tail.value}"
     temp = @head
     if temp.next_node == nil
       puts temp.value 
@@ -92,7 +107,18 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-p linked_list.at(4)
+linked_list.iterate
+
+linked_list.pop
+linked_list.iterate
+linked_list.pop
+linked_list.iterate
+linked_list.pop
+linked_list.iterate
+linked_list.pop
+p linked_list.head
+p linked_list.tail
+# linked_list.iterate
 
 # linked_list.prepend 3
 # linked_list.iterate
