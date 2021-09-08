@@ -36,11 +36,11 @@ class LinkedList
     temp = @head
     size = 0
     return 0 if temp == nil
-    until temp.next_node == nil
-      temp = temp.next_node
-      size += 1
+    until temp == nil
+      size+=1
+      temp=temp.next_node
     end
-    size += 1
+    size
   end
 
   def head 
@@ -129,4 +129,4 @@ linked_list.append 1
 linked_list.append 2
 linked_list.append 3
 linked_list.append 4
-p linked_list.contains? 5
+p linked_list.size
