@@ -18,9 +18,24 @@ class LinkedList
     end
   end
 
+  def prepend value
+    if @head == nil
+      new_node = Node.new value, nil
+      @head = new_node
+    else
+      temp = @head
+      new_node = Node.new value, temp
+      @head = new_node
+    end
+  end
+
   def iterate 
     temp = @head
-    puts temp.value if temp.next_node == nil
+    if temp.next_node == nil
+      puts temp.value 
+      puts "\n"
+      return
+    end
     until temp.next_node == nil
       puts temp.value
       temp = temp.next_node
@@ -39,10 +54,9 @@ class Node
 end
 
 linked_list = LinkedList.new
-# linked_list.iterate
-linked_list.append(1)
+linked_list.prepend 3
 linked_list.iterate
-linked_list.append(2)
+linked_list.prepend 2
 linked_list.iterate
-linked_list.append(3)
+linked_list.prepend 1
 linked_list.iterate
