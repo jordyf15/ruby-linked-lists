@@ -126,6 +126,24 @@ class LinkedList
       new_node.next_node = next_node
     end
   end
+
+  def remove_at index
+    if index >= self.size || index < 0 || @head == nil
+      puts "index out of range"
+      return
+    elsif index == 0
+      temp = @head
+      @head = head.next_node
+    elsif index == self.size-1
+      pop
+    else
+      deleted_node = at index
+      next_node = at index+1
+      prev_node = at index-1
+      prev_node.next_node = next_node
+      deleted_node.next_node = nil
+    end
+  end
 end
 
 class Node
@@ -137,10 +155,5 @@ class Node
 end
 
 linked_list = LinkedList.new
-linked_list.append 1
-linked_list.append 2
-linked_list.append 3
-linked_list.append 4
-linked_list.to_s
-linked_list.insert_at 5, 3
+# Insert the operation you want below here
 
