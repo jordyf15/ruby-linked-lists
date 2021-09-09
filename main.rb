@@ -110,21 +110,21 @@ class LinkedList
     puts str
   end
 
-  def iterate 
-    puts "head : #{@head.value}"
-    puts "tail : #{@tail.value}"
-    temp = @head
-    if temp.next_node == nil
-      puts temp.value 
-      puts "\n"
+  def insert_at value, index
+    if index > self.size || index < 0
+      puts "index out of range"
       return
+    elsif index == 0
+      prepend value
+    elsif index == self.size
+      append value
+    else
+      next_node = at index
+      prev_node = at index-1
+      new_node = Node.new value
+      prev_node.next_node = new_node
+      new_node.next_node = next_node
     end
-    until temp.next_node == nil
-      puts temp.value
-      temp = temp.next_node
-    end
-    puts temp.value
-    puts "\n"
   end
 end
 
@@ -142,7 +142,5 @@ linked_list.append 2
 linked_list.append 3
 linked_list.append 4
 linked_list.to_s
-linked_list.pop
-linked_list.to_s
-linked_list.prepend 99
-linked_list.to_s
+linked_list.insert_at 5, 3
+
